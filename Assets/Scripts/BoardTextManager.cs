@@ -5,19 +5,20 @@ using UnityEngine;
 
 public class BoardTextManager : MonoBehaviour
 {
-    [SerializeField] private int[,] gameBoard;
+    private int[,] gameBoard;
     [SerializeField] private int x;
     [SerializeField] private int y;
-    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField]  private TextMeshProUGUI DisText;
 
+    private void Start()
+    {
+        DisText = gameObject.GetComponent<TextMeshProUGUI>();
+    }
     public void Init(int[,] gameBoard)
     {
+        DisText = gameObject.GetComponent<TextMeshProUGUI>();
         this.gameBoard = gameBoard;
-        text.text = this.gameBoard[x, y].ToString();
-        if(this.gameBoard[x, y] == -1)
-        {
-
-        }
+        DisText.text = gameBoard[x, y].ToString();
     }
 
 }
